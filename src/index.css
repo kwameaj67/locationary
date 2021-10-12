@@ -1,3 +1,28 @@
+@font-face{
+  font-family: 'Black';
+  src: url('./assets/fonts/AirbnbCerealBlack.ttf') format("truetype"); 
+}
+@font-face{
+  font-family: 'Bold';
+  src: url('./assets/fonts/AirbnbCerealBold.ttf') format("truetype"); 
+}
+@font-face{
+  font-family: 'Regular';
+  src: url('./assets/fonts/AirbnbCerealBook.ttf') format("truetype"); 
+}
+@font-face{
+  font-family: 'Extra-Bold';
+  src: url('./assets/fonts/AirbnbCerealExtraBold.ttf') format("truetype"); 
+}
+@font-face{
+  font-family: 'Light';
+  src: url('./assets/fonts/AirbnbCerealLight.ttf') format("truetype"); 
+}
+@font-face{
+  font-family: 'Medium';
+  src: url('./assets/fonts/AirbnbCerealMedium.ttf') format("truetype"); 
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
