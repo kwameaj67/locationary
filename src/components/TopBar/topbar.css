@@ -1,0 +1,33 @@
+.topbar_area{
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
+    border-bottom: solid 1.2px #EBEBEB;
+}
+.topbar_area .container{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction:row;
+}
+.topbar_area .top_title{
+    font-family:"Bold";
+    margin:0;
+    font-size: 14px;
+    color: #55575b;
+    text-decoration: none;
+    text-decoration-color:transparent;
+    text-decoration-style: none;
+    transition: 0.2s ease-in;
+}
+.topbar_area .container .action_btn a{
+    text-decoration: none;
+    font-family:"Medium";
+    margin:0;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    background-color: #55575b;
+    padding: 10px 20px;
+    border-radius:10px;
+}
