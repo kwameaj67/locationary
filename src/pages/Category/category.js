@@ -1,11 +1,14 @@
 import React from 'react';
 import './category.css'
-
+import TopBar from '../../components/TopBar/CategoryTopBar'
 
  const categoryPage = () => {
 
     return(
-        <div>Category</div>
+        <div className="category_area">
+            <TopBar/>
+            <p>categoryPage</p>
+        </div>
     )
 }
 
