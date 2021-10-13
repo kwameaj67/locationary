@@ -37,18 +37,18 @@
 .bottom_bar .bar_row .item .icon{
     color: #0000FF;
 }
-.bottom_bar .bar_row .item .bar_title{
+.bottom_bar .bar_row .item p{
     font-family:"Medium";
     margin:0;
     padding-top:-5px;
     font-size: 16px;
     color: #55575b;
-    text-decoration: none;
-    text-decoration-color:transparent;
+    /* text-decoration: none; */
+    /* text-decoration-color:transparent; */
     text-decoration-style: none;
     transition: 0.2s ease-in;
 }
-.bottom_bar .bar_row .item:hover .bar_title {
+.bottom_bar .bar_row .item:hover p {
     /* color: #0000FF;  */
     transition: 0.2s ease-in;
 }

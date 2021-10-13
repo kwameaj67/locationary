@@ -12,16 +12,19 @@ function BottomBarComponent() {
                 {
                     bottomBarRoutes.map((value, key) => {
                         return (
-                            <div className="bar_row" >
-                                <Link to={value.path}>
-                                    <li>
-                                        <div key={key} className="item">
-                                            <div className="icon">{value.icon}</div>
-                                            <div><p className="bar_title">{value.title}</p></div>
-                                        </div>
-                                    </li>
+                            <div className="bar_row" key={key}>
 
-                                </Link>
+                                <li>
+                                    <div key={key} className="item">
+                                        <div className="icon">{value.icon}</div>
+                                        <div>
+                                            <Link to={value.path}>
+                                                <p className="bar_title">{value.title}</p>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </div>
                         )
                     })
