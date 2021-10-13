@@ -3,10 +3,7 @@ import './topbar.css'
 import { Switch, Route } from 'react-router-dom'
 import tabs from '../BottomBar/BottomBarData'
 
-function TopBarComponent() {
-    const addCategory = (e) =>{
-        e.preventDefault()
-    }
+function TopBarComponent({addCategoryFunc}) {
     return (
         <div className="topbar_area">
             <div className="container">
@@ -23,7 +20,7 @@ function TopBarComponent() {
                     </Switch>
                 }
                 <div className="action_btn">
-                    <a href="/" onClick={addCategory}>Add Category</a>
+                    <a href="/" onClick={addCategoryFunc}>Add Category</a>
                 </div>
             </div>
         </div>
