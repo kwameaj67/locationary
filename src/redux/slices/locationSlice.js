@@ -7,7 +7,7 @@ const locationSlice = createSlice({
             id:1,
             name:"Accra",
             address:"South Ghana",
-            coordinates:{ lat: 5.55602, lng: -0.1969,time:2323 },
+            coordinates:{ lat: 3.55602, lng: -0.1969,time:2323 },
             category:"Plants",
             completed:false
         },
@@ -15,10 +15,12 @@ const locationSlice = createSlice({
             id:2,
             name:"Ho",
             address:"North Ghana",
-            coordinates:{ lat: 3.55602, lng: -0.1369,time:403423 },
-            category:"Sea",
+            coordinates:{ lat:5.6338208, lng: -0.182515,time:403423 },
+            category:"Fuego",
             completed:false
         },
+        
+        
     ],
     reducers:{ 
         addLocationAction:(state, action) =>{
