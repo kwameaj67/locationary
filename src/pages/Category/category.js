@@ -1,36 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './category.css'
 import TopBar from '../../components/TopBar/CategoryTopBar'
-import { CATEGORY_DATA } from '../../utils/data'
+// import { CATEGORY_DATA } from '../../utils/data'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCategoryAction, removeCategoryAction, editCategoryAction } from '../../redux/slices/categorySlice'
 
 const CategoryPage = () => {
-    var categories = CATEGORY_DATA
+    // var categories = CATEGORY_DATA
+    const dispatch = useDispatch()
     const [category, setCategory] = useState("");
     const [showErrorMsg, setErrorMsg] = useState(false)
     const [showEditSection, setEditSection] = useState(false)
     const [editText, setEditText] = useState("")
+    const [editID,setEditID] = useState(null)
 
+    //  the state value contains entire state stored in redux
+    const categoryState = useSelector((state) => state.categories)
+    useEffect(() => {
+        document.title ="myLocation | CategoryPage"
+        console.log(categoryState)
+        return categoryState
+    })
     const addCategory = (e) => {
         e.preventDefault();
         if (category === "") {
             setErrorMsg(true)
             setInterval(() => {
                 setErrorMsg(false)
-            }, 2000)
+            }, 4000)
+        } else {
+            dispatch(
+                addCategoryAction({
+                    id: Date.now(),
+                    name: category,
+                })
+            )
+            setCategory("")
         }
     }
-    const deleteCategory = (ID) => {
-        categories = categories.filter(item => !ID.includes(item.id))
+    const deleteCategory = (id) => {
+        dispatch(
+            removeCategoryAction({
+                id: id
+            })
+        )
         setEditSection(false)
     }
-    const showEditCategory = (name) => {
+    const showEditCategory = (id,name) => {
         console.log("open edit section")
         setEditSection(true)
         setEditText(name)
+        setEditID(id)
+
+        console.log(id,name)
     }
-    const editCategory = () =>{
+    const editCategory = () => {
+        dispatch(
+            editCategoryAction({
+                id: editID,
+                name: editText,
+            })
+        )
         setEditSection(false)
     }
+
     return (
         <div className="category_area">
             <div className="topbar">
@@ -48,13 +81,13 @@ const CategoryPage = () => {
                     <h1>List of category</h1>
                     <div className="category_list">
                         {
-                            categories.map((item) => (
+                            categoryState.map((item) => (
                                 <div key={item.id} className="list_item">
                                     <ul>
                                         <li> <div className="row">
                                             <p className="category_name">#{item.name}</p>
-                                            <button className="delete-btn" onClick={()=>{deleteCategory(item.id)}}>Remove</button>
-                                            <button className="edit-btn" onClick={()=>{showEditCategory(item.name)}}>Edit</button>
+                                            <button className="delete-btn" onClick={() => { deleteCategory(item.id) }}>Remove</button>
+                                            <button className="edit-btn" onClick={() => { showEditCategory(item.id,item.name) }}>Edit</button>
                                         </div></li>
                                     </ul>
                                 </div>
@@ -65,7 +98,7 @@ const CategoryPage = () => {
                         {showEditSection &&
                             <div className="edit_container">
                                 <input className="input" type="default" placeholder="" autoComplete="false" name="editCategory" value={editText} onChange={(e) => { setEditText(e.target.value) }} />
-                                <button onClick={editCategory}>Edit category</button>
+                                <button onClick={() => { editCategory() }}>Edit category</button>
                             </div>
                         }
                     </div>

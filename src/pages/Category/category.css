@@ -27,7 +27,7 @@
     margin:0rem 4rem;
 }
 .category_area  .category_container .category_heading h1{
-    font-size:40px;
+    font-size:30px;
     font-family:"Bold"
 }
 .category_area  .category_container .category_heading p{
@@ -62,11 +62,13 @@
     margin-top: 10px;
 }
 .category_area  .category_container .category_heading .errorMsg{
+    top:0px;
     margin-top: 8px;
     font-family: "Regular";
     font-size: 12px;
     color: blue;
-    transition: 0.5s ease-in-out;
+    transform: scaleY(1);
+    transition: all .5s ease-in-out;
 }
 .category_area  .category_container .category_list_container{
     flex-basis:60%;
@@ -96,14 +98,14 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding:0px;
-    padding-right: 48px;
+    padding-right: 28px;
 }
 .category_area  .category_container .category_list .list_item ul li{
     font-size:15px;
     font-family:"Regular";
     color: #55575b;
     background-color: #f6f6f6;
-    padding:0px 25px;
+    padding:0px 15px;
     border-radius:10px;
     cursor:pointer;
     transition: 0.5s ease-in-out;
