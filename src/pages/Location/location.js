@@ -31,9 +31,13 @@ const LocationPage = () => {
             setErrorMsg("Enter name of location address")
         } else if (category === "") {
             setErrorMsg("Select a category")
-        } else if (coordinates === {}) {
-            setErrorMsg("Select your location from the map provided")
-        } else {
+        } else if (Object.keys(coordinates).length === 0) {
+            setErrorMsg("Pick your location from the map provided")
+        }
+        // else if (Object.keys(marker === 0)) {
+        //     setErrorMsg("Pick your location marker")
+        // }
+         else {
             dispatchNewLocation()
         }
 
@@ -56,6 +60,7 @@ const LocationPage = () => {
         setAddress("")
         setCoordinates({})
         setCategory("")
+        setShowErrorMsg(false)
     }
     const getAllCategories = () => {
         return categoryState
@@ -83,7 +88,7 @@ const LocationPage = () => {
                         <input className="input" type="default" placeholder="Enter an address" autoComplete="false" name="address" value={address} onChange={(e) => { setAddress(e.target.value) }} />
 
                         <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
-                            <option className="value" value={category} hidden={true}>--Select category--</option>
+                            <option className="value" value={category !== 0 ? category : ""} hidden={true}>--Select category--</option>
                             {
                                 categoryState.map((item) => {
                                     return (
@@ -111,18 +116,10 @@ const LocationPage = () => {
                                     time: Date.now()
                                 })
                                 // update input with current coordinates
-                                setCoordinates({ lat: marker.lat, lng: marker.lng,time:marker.time })  
+                                setCoordinates({ lat: parseFloat(event.latLng.lat()), lng: parseFloat(event.latLng.lat()),time:marker.time })  
                                 console.log("cordintates"+coordinates.lat, coordinates.lng)
                             }}
                         >
-                            {/* {markers.map(marker =>{
-                                return(
-                                    <Marker 
-                                    key={marker.time}
-                                    position={{lat:marker.lat, lng:marker.lng}}
-                                    />
-                                )
-                            })} */}
                             {marker !== {} ?
                                 <Marker key={marker.time} position={{ lat: marker.lat, lng: marker.lng }} />
                                 :
