@@ -1,0 +1,19 @@
+.welcome_container{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome_container h1{
+    font-size:24px;
+    font-family:"Bold";
+}
+.welcome_container p{
+    font-size:16px;
+    font-family:"Regular";
+    color: #55575b; 
+}
