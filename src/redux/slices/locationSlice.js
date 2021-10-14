@@ -31,6 +31,8 @@ const locationSlice = createSlice({
                 completed:action.payload.completed,
             }
             state.push(newLocation)
+            sessionStorage.setItem("newLocation",JSON.stringify(newLocation))
+            sessionStorage.setItem("locationData",JSON.stringify(state))
         },
         removeLocationAction:(state, action) => {
             const removeItem = state.filter((item) => item.id !== action.payload.id)
