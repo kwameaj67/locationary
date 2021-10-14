@@ -16,6 +16,8 @@ const categorySlice  = createSlice({
                 completed:true,
             }
             state.push(newCategory);
+            sessionStorage.setItem('categoryData', JSON.stringify(state));
+            sessionStorage.setItem('newCategory', JSON.stringify(newCategory));
         },
         removeCategoryAction: (state, action) =>{
            const removeItem = state.filter((item) => item.id !== action.payload.id)
