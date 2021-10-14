@@ -2,13 +2,15 @@
     width: 100%;
     text-align: center;
     padding: 15px 0px;
-    border-bottom: solid 1.2px #EBEBEB;
+    /* border-bottom: solid 1.2px #EBEBEB; */
+    background-color: #55575b;
 }
 .topbar_area .container{
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction:row;
+    margin:0rem 4rem;
 }
 .topbar_area .container .backbtn_style{
     display:flex;
@@ -23,14 +25,15 @@
     border:none;
     font-family:"Medium";
     font-size: 14px;
-    color:#55575b;
+    /* color:#55575b; */
+    color:white;
 
 }
 .topbar_area .top_title{
     font-family:"Bold";
     margin:0;
     font-size: 14px;
-    color: #55575b;
+    color: white;
     text-decoration: none;
     text-decoration-color:transparent;
     text-decoration-style: none;
@@ -47,12 +50,17 @@
     font-family:"Medium";
     margin:0 1rem;
     font-size: 12px;
-    color: white;
+    color: #55575b;
     text-decoration: none;
-    background-color: #55575b;
+    background-color: white;
     padding: 10px 20px;
     border-radius:10px;
     cursor:pointer;
     outline: none;
     border: none;
+}
+@media screen and (max-width:545px){
+    /* .topbar_area .container{
+        margin:0rem 0rem;
+    } */
 }

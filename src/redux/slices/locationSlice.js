@@ -19,8 +19,6 @@ const locationSlice = createSlice({
             category:"Fuego",
             completed:false
         },
-        
-        
     ],
     reducers:{ 
         addLocationAction:(state, action) =>{
@@ -39,7 +37,7 @@ const locationSlice = createSlice({
             return removeItem
         },
         editLocationAction:(state, action) => {
-            const index = state.findIndex((item) => item.id === action.payload.id)
+            const index = state.findIndex((item) => item.id === action.payload.id)  //finds index of particular item
             state[index].name = action.payload.name
             state[index].address = action.payload.address
             state[index].category = action.payload.category

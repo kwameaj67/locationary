@@ -12,8 +12,6 @@
     justify-content: space-between;
     width: 100vw;
     height:100%;
-    position: relative;
-    
  }
  .location_area  .location_container .location_heading{
      display: flex;
@@ -28,13 +26,15 @@
  }
  .location_area  .location_container .location_heading h1{
      font-size:30px;
-     font-family:"Bold"
+     font-family:"Bold";
+     text-align:left;
  }
  .location_area  .location_container .location_heading p{
      font-size:16px;
      font-family:"Regular";
      color: #55575b;
      margin-top: -2px;
+     text-align:left;
  }
  .location_area  .location_container .location_heading form{
      width: 100%;
@@ -77,7 +77,7 @@
     border-radius: 6px;
     letter-spacing: 0px;
     color: rgb(37, 37, 37);
-    width: 106%;
+    /* width: 104%; */
     margin-top: 10px;
     appearance: none;
 }
@@ -109,3 +109,26 @@
  .location_area  .location_container .location_list_container .location_maps{
 
  }
+ /* responsiveness */
+@media screen and (max-width:940px){
+    .location_area .location_container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin:2rem 0rem;
+    }
+    .location_area  .location_container .location_heading h1,.location_area  .location_container .location_list_container h1{
+        font-size:20px;
+    }
+    .location_area  .location_container .location_list_container .location_maps{
+        margin-bottom:2rem;
+    }
+}
+@media screen and (max-width:545px){
+    .location_area  .location_container .location_heading{
+        margin:0rem 2rem;
+    }
+    .location_area  .location_container .location_list_container{
+        margin:0rem 2rem;
+    }
+}

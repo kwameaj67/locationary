@@ -6,6 +6,7 @@ import Maps from '../../components/Map/Maps'
 import { Marker } from '@react-google-maps/api'
 import { addLocationAction } from '../../redux/slices/locationSlice'
 import { useHistory } from 'react-router-dom'
+import { toaster } from 'evergreen-ui'
 
 const LocationPage = () => {
     const history = useHistory()
@@ -54,10 +55,13 @@ const LocationPage = () => {
             }
         ))
         emptyAllFields()
+        toaster.success("You've successfully added a new location.")
+        
     }
     const emptyAllFields = () => {
         setName("")
         setAddress("")
+        setMarkers({})
         setCoordinates({})
         setCategory("")
         setShowErrorMsg(false)
@@ -84,9 +88,8 @@ const LocationPage = () => {
                     <p>Add new locations of your choice.⚡️</p>
                     <form onSubmit={addLocation}>
                         <input className="input" type="default" placeholder="Enter name of location" autoComplete="false" name="name" value={name} onChange={(e) => { setName(e.target.value) }} />
-
                         <input className="input" type="default" placeholder="Enter an address" autoComplete="false" name="address" value={address} onChange={(e) => { setAddress(e.target.value) }} />
-
+                        <input className="input" type="default" placeholder="Enter coordinates" autoComplete="false" name="coordinates" value={`${coordinates.lat && coordinates.lng !== "" ? `${coordinates.lat},${coordinates.lng}` : "No coordinates"} `} readOnly={true} />
                         <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
                             <option className="value" value={category !== 0 ? category : ""} hidden={true}>--Select category--</option>
                             {
@@ -97,7 +100,7 @@ const LocationPage = () => {
                                 })
                             }
                         </select>
-                        <input className="input" type="default" placeholder="Enter coordinates" autoComplete="false" name="coordinates" value={`${coordinates.lat && coordinates.lng !== "" ? `${coordinates.lat},${coordinates.lng}` : "No coordinates"} `} readOnly={true} />
+                       
                         {showErrorMsg && <p className="errorMsg">{errorMsg}</p>}
                         <button>Add Location</button>
                     </form>

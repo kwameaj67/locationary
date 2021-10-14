@@ -28,6 +28,7 @@ const Maps = (props) => {
     return (
         // <LoadScript googleMapsApiKey={MAPS_API}>
             <GoogleMap
+                className="maps"
                 mapContainerStyle={containerStyle}
                 zoom={10}
                 center={props.center}

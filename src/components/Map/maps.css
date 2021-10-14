@@ -3,3 +3,14 @@
     font-size: 14px;
     color: rgb(37, 37, 37);
 }
+.maps{
+    width: 50vw;
+    height: 50vh;
+}
+
+/* responsive maps */
+@media screen and (max-width:940px){
+    .maps{
+        width: 100%;
+    }
+}

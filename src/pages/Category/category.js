@@ -3,6 +3,7 @@ import './category.css'
 import TopBar from '../../components/TopBar/CategoryTopBar'
 // import { CATEGORY_DATA } from '../../utils/data'
 import { useDispatch, useSelector } from 'react-redux'
+import { toaster } from 'evergreen-ui'
 import { addCategoryAction, removeCategoryAction, editCategoryAction } from '../../redux/slices/categorySlice'
 
 const CategoryPage = () => {
@@ -36,6 +37,7 @@ const CategoryPage = () => {
                 })
             )
             setCategory("")
+            toaster.success("You've successfully added a new category.")
         }
     }
     const deleteCategory = (id) => {
@@ -45,6 +47,7 @@ const CategoryPage = () => {
             })
         )
         setEditSection(false)
+        toaster.success("You've successfully removed a category.")
     }
     const showEditCategory = (id,name) => {
         console.log("open edit section")
@@ -62,6 +65,7 @@ const CategoryPage = () => {
             })
         )
         setEditSection(false)
+        toaster.success("You've successfully edit an existed category.")
     }
 
     return (

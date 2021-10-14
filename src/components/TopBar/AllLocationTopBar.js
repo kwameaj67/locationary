@@ -9,13 +9,13 @@ function EditLocationTopBarComponent({editLocationFunc}) {
             <div className="container">
             <Link to="/location" style={{ textDecoration: 'none' }}>
                 <div className="backbtn_style">
-                    <FiChevronLeft color="#55575b" size={20}/>
+                    <FiChevronLeft color="white" size={20}/>
                     <button className="go_back_btn">Go back</button>
                 </div>
             </Link>
             <p className="top_title">All locations </p>
                 <div className="action_btn">
-                    <button onClick={editLocationFunc}>Edit Location</button>
+                    {/* <button onClick={editLocationFunc}>Edit Location</button> */}
                 </div>
             </div>
         </div>

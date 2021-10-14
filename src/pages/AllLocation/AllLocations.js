@@ -8,6 +8,7 @@ import { removeLocationAction, editLocationAction } from '../../redux/slices/loc
 import Maps from '../../components/Map/Maps'
 import { Marker, InfoWindow } from '@react-google-maps/api'
 import moment from 'moment'
+import { toaster } from 'evergreen-ui'
 
 const AllLocations = () => {
     const dispatch = useDispatch()
@@ -31,6 +32,7 @@ const AllLocations = () => {
         dispatch(
             removeLocationAction({ id: id })
         )
+        toaster.success("You've successfully removed a location.")
     }
     const showEditLocation = (item) => {
         console.log(item)
@@ -53,6 +55,7 @@ const AllLocations = () => {
         dispatchEditNewLocation()
         setEditing(false)
         setShowErrorMsg(false)
+        toaster.success("You've successfully added edited an existing location.")
     }
     const dispatchEditNewLocation = () => {
         dispatch(
@@ -86,7 +89,7 @@ const AllLocations = () => {
     return (
         <div className="allLocation_area">
             <div className="topbar">
-                <TopBar editLocationFunc={editLocation} />
+                <TopBar />
             </div>
             <div className="allLocation_container">
                 <div className="allLocation_heading">
@@ -132,7 +135,7 @@ const AllLocations = () => {
                                 setCoordinates({
                                     lat: parseFloat(event.latLng.lat()),
                                     lng: parseFloat(event.latLng.lng()),
-                                    time: Date.now()  
+                                    time: Date.now()
                                 })
                                 console.log(coordinates)
                             }
@@ -143,12 +146,12 @@ const AllLocations = () => {
                             <Marker
                                 key={coordinates.time}
                                 draggable={true}
-                                onDrag={(event)=>{ 
+                                onDrag={(event) => {
                                     console.log(event)
                                     setCoordinates({
                                         lat: parseFloat(event.latLng.lat()),
                                         lng: parseFloat(event.latLng.lng()),
-                                        time: Date.now()  
+                                        time: Date.now()
                                     })
                                 }}
                                 position={{ lat: coordinates.lat, lng: coordinates.lng }}
@@ -190,21 +193,23 @@ const AllLocations = () => {
                     {/* shows when editing a particular location */}
                     {editing &&
                         <form onSubmit={editLocation} className="form">
-                            <input className="input" type="default" placeholder="Enter name of location" autoComplete="false" name="name" value={name} onChange={(e) => { setName(e.target.value) }} />
-
-                            <input className="input" type="default" placeholder="Enter an address" autoComplete="false" name="address" value={address} onChange={(e) => { setAddress(e.target.value) }} />
-
-                            <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
-                                <option className="value" value={category !== 0 ? category : ""} hidden={true}>{category}</option>
-                                {
-                                    categoryState.map((item) => {
-                                        return (
-                                            <option key={item.id} value={(item.name)}>{item.name}</option>
-                                        )
-                                    })
-                                }
-                            </select>
-                            <input className="input" type="default" placeholder="Enter coordinates" autoComplete="false" name="coordinates" value={`${coordinates.lat && coordinates.lng !== "" ? `${coordinates.lat},${coordinates.lng}` : "No coordinates"} `} readOnly={true} />
+                            <div className="row">
+                                <input className="input" type="default" placeholder="Enter name of location" autoComplete="false" name="name" value={name} onChange={(e) => { setName(e.target.value) }} />
+                                <input className="input" type="default" placeholder="Enter an address" autoComplete="false" name="address" value={address} onChange={(e) => { setAddress(e.target.value) }} />
+                            </div>
+                            <div className="row">
+                                <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
+                                    <option className="value" value={category !== 0 ? category : ""} hidden={true}>{category}</option>
+                                    {
+                                        categoryState.map((item) => {
+                                            return (
+                                                <option key={item.id} value={(item.name)}>{item.name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                                <input className="input" type="default" placeholder="Enter coordinates" autoComplete="false" name="coordinates" value={`${coordinates.lat && coordinates.lng !== "" ? `${coordinates.lat},${coordinates.lng}` : "No coordinates"} `} readOnly={true} />
+                            </div>
                             {showErrorMsg && <p className="errorMsg">{errorMsg}</p>}
                             <button>Edit this Location</button>
                         </form>
