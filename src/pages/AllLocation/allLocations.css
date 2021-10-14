@@ -1,0 +1,104 @@
+.allLocation_area {
+    width: 100%;
+    height: 100%;
+}
+.allLocation_area .topbar{
+    position: sticky;
+    top:0%;
+}
+.allLocation_area .allLocation_container{
+    width: 100vw;
+    height:100%;
+    position: relative;
+    margin:2rem 0rem;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading{
+     margin:0rem 10rem;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading h1{
+     font-size:30px;
+     font-family:"Bold"
+ }
+ .allLocation_area  .allLocation_container .allLocation_list {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item {
+    width: 100%;
+    border-bottom: 1px solid #EBEBEB;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item .item_block{
+     display:flex;
+     flex-direction:row;
+     justify-content:space-between;
+     align-items:center;
+     cursor:pointer;
+     margin: 10px 0px;
+ }
+
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item  .item_block .item_column{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start; 
+    flex-basis:50%;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item .item_block .item_column .icon_container{
+    margin:0px 10px;
+}
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item .item_block .item_column .location_data .name{
+     font-size:16px;
+     font-family:"Medium";
+     color:black;
+     margin:0px;
+     padding:0px;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item .item_block .item_column .location_data .address{
+    font-size:14px;
+    font-family:"Regular";
+    color: rgb(37, 37, 37);
+    margin:0px;
+    padding:5px 0px;
+}
+.allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item  .item_block .location_data .category{
+    font-size:12px;
+    font-family:"Regular";
+    color: white;
+    background-color: #55575b;
+    padding:4px 10px;
+    border-radius:4px;
+    cursor:pointer;
+    margin:4px 0px;
+    transition: 0.5s ease-in-out;
+}
+.allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item  .item_block .action_btns{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:flex-start; 
+    flex-basis:50%;
+}
+.allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item  .item_block .action_btns .delete-btn{
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    text-decoration:underline;
+    color: red;
+    font-family:"Medium";
+    cursor:pointer;
+    transition: 300ms ease-in-out;
+    margin-right:6px;
+}
+.allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item  .item_block .action_btns .edit-btn{
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    text-decoration:underline;
+    color: blue;
+    font-family:"Medium";
+    cursor:pointer;
+    transition: 300ms ease-in-out;
+    margin-right:14px;
+}
