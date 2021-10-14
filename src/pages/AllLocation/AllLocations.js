@@ -84,6 +84,7 @@ const AllLocations = () => {
     useEffect(() => {
         getLocationMarkers()
         // console.log(locationState.length)
+        document.title ="myLocation | All locations"
         return locationState
     })
     return (
