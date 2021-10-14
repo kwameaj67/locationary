@@ -48,3 +48,22 @@ export var CATEGORY_DATA = [
         name:`${1940}s`
      },
 ]
+
+export var LOCATION_DATA = [
+      {
+          id:1,
+          name:"Accra",
+          address:"South Ghana",
+          coordinates:{ lat: 5.55602, lng: -0.1969 },
+          category:"Plants",
+          completed:false
+      },
+      {
+          id:2,
+          name:"Ho",
+          address:"North Ghana",
+          coordinates:{ lat: 3.55602, lng: -0.1369 },
+          category:"Sea",
+          completed:false
+      },
+]
