@@ -1,5 +1,6 @@
 .bottom_bar{
     width: 100%;
+    background-color: #55575b;
 }
 .bottom_bar ul {
     padding: 0;
@@ -11,7 +12,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border-top: solid 1.2px #EBEBEB;
+    /* border-top: solid 1.2px #EBEBEB; */
 }
 .bottom_bar ul li{
     list-style:none;
@@ -42,7 +43,7 @@
     margin:0;
     padding-top:-5px;
     font-size: 16px;
-    color: #55575b;
+    color: white;
     /* text-decoration: none; */
     /* text-decoration-color:transparent; */
     text-decoration-style: none;
@@ -52,3 +53,9 @@
     /* color: #0000FF;  */
     transition: 0.2s ease-in;
 }
+@media screen and (max-width:940px){
+    .bottom_bar .bar_row .item p{
+        font-size: 14px;
+    }
+}
+    
