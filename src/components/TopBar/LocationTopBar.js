@@ -3,11 +3,8 @@ import './topbar.css'
 import { Switch, Route } from 'react-router-dom'
 import tabs from '../BottomBar/BottomBarData'
 
-function TopBarComponent() {
+function TopBarComponent({addLocationFunc,viewLocationFunc}) {
 
-    const addLocation = (e) =>{
-        e.preventDefault()
-    }
     return (
         <div className="topbar_area">
             <div className="container">
@@ -24,7 +21,8 @@ function TopBarComponent() {
                     </Switch>
                 }
                 <div className="action_btn">
-                    <a href="/" onClick={addLocation}>Add Location</a>
+                    <button onClick={addLocationFunc}>Add Location</button>
+                    <button onClick={viewLocationFunc}>View Locations</button>
                 </div>
             </div>
         </div>

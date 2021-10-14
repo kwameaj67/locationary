@@ -20,7 +20,7 @@ function TopBarComponent({addCategoryFunc}) {
                     </Switch>
                 }
                 <div className="action_btn">
-                    <a href="/" onClick={addCategoryFunc}>Add Category</a>
+                    <button onClick={addCategoryFunc}>Add Category</button>
                 </div>
             </div>
         </div>
