@@ -17,3 +17,13 @@
     font-family:"Regular";
     color: #55575b; 
 }
+@media screen and (max-width:545px){
+    .welcome_container h1{
+        font-size:20px;
+    }
+    .welcome_container p{
+        font-size:15px;
+        max-width:200px;
+        line-height:22px;
+    } 
+}
