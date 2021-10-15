@@ -16,6 +16,7 @@ const categorySlice  = createSlice({
                 completed:true,
             }
             state.push(newCategory);
+            // stores data in memory
             sessionStorage.setItem('categoryData', JSON.stringify(state));
             sessionStorage.setItem('newCategory', JSON.stringify(newCategory));
         },
