@@ -31,6 +31,7 @@ const locationSlice = createSlice({
                 completed:action.payload.completed,
             }
             state.push(newLocation)
+            // stores data in memory
             sessionStorage.setItem("newLocation",JSON.stringify(newLocation))
             sessionStorage.setItem("locationData",JSON.stringify(state))
         },
