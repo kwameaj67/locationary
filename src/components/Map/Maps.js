@@ -8,7 +8,7 @@ import { mapStyles } from './mapStyles'
 const Maps = (props) => {
     const containerStyle = {
         width: '50vw',
-        height: '50vh'
+        height: '48vh'
     };
     // const center = {
     //     lat: -3.745,
