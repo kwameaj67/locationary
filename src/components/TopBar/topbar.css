@@ -60,7 +60,11 @@
     border: none;
 }
 @media screen and (max-width:545px){
-    /* .topbar_area .container{
-        margin:0rem 0rem;
-    } */
+    .topbar_area .container{
+        margin:0rem 1rem;
+    }
+    .topbar_area .container .action_btn button{
+        padding: 10px 10px;
+        margin:0 0.5rem;
+    }
 }

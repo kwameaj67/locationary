@@ -22,7 +22,6 @@ function AppRouter() {
                             exact={route.exact}
                             children={<route.main />}
                         />
-
                     ))}
                     <Switch>
                         <Route path="/viewLocations">

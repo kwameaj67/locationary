@@ -120,15 +120,18 @@
     .location_area  .location_container .location_heading h1,.location_area  .location_container .location_list_container h1{
         font-size:20px;
     }
+    .location_area  .location_container .location_heading p{
+        font-size:14px;
+    }
     .location_area  .location_container .location_list_container .location_maps{
         margin-bottom:2rem;
     }
 }
 @media screen and (max-width:545px){
     .location_area  .location_container .location_heading{
-        margin:0rem 2rem;
+        margin:0rem 1rem;
     }
     .location_area  .location_container .location_list_container{
-        margin:0rem 2rem;
+        margin:0rem 1rem;
     }
 }

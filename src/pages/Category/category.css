@@ -188,7 +188,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin:4rem 0rem;
+        margin:2rem 0rem;
     }
     .category_area  .category_container .category_heading h1{
         font-size:20px;
@@ -213,3 +213,13 @@
         font-size:14px;
     }
 }
+
+@media screen and (max-width:545px){
+    .category_area  .category_container .category_heading{
+        margin:0rem 1rem;
+    }
+    .category_area  .category_container .category_list_container{
+        margin:0rem 1rem;
+    }
+}
+    
