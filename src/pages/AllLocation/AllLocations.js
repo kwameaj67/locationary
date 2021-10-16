@@ -25,7 +25,9 @@ const AllLocations = () => {
     const [errorMsg, setErrorMsg] = useState("")
 
     const locationState = useSelector(state => state.locations)
+
     const categoryState = useSelector((state) => state.categories)
+    // const filteredLocations = locationState.filter(loc => loc.category === category)
 
 
     const deleteLocation = (id) => {
@@ -42,10 +44,8 @@ const AllLocations = () => {
         setAddress(item.address)
         setCategory(item.category)
         setCoordinates(item.coordinates)
-
-        // remove all location 
-
     }
+   
     const editLocation = (e) => {
         e.preventDefault()
         setShowErrorMsg(true)
@@ -70,9 +70,9 @@ const AllLocations = () => {
     }
     const getLocationMarkers = () => {
         // // retrieve all coordinates from locations & add to markers
-        // locationState.map(item => {
-        //     return console.log(item.coordinates)
-        // })
+        locationState.map(item => {
+            return console.log(item.coordinates)
+        })
     }
     const showMapCenterPosition = () => {
         if (editing) {
@@ -84,7 +84,8 @@ const AllLocations = () => {
     useEffect(() => {
         getLocationMarkers()
         // console.log(locationState.length)
-        document.title ="myLocation | All locations"
+        document.title = "myLocation | All locations"
+      
         return locationState
     })
     return (
@@ -95,6 +96,19 @@ const AllLocations = () => {
             <div className="allLocation_container">
                 <div className="allLocation_heading">
                     <h1>My Locations</h1>
+                    {/* <div className="filtered_list">
+                        <p>Filtered by</p>
+                        <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
+                            <option className="value" value={category !== 0 ? category : "Select category"} hidden={true}>{category}</option>
+                            {
+                                categoryState.map((item) => {
+                                    return (
+                                        <option className="item_name" key={item.id} value={(item.name)}>{item.name}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div> */}
                     <div className="allLocation_list">
                         {locationState.length === 0 && <p>There are no locations</p>}
                         {

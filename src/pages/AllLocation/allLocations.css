@@ -23,7 +23,33 @@
      font-size:30px;
      font-family:"Bold";
      text-align:left;
-
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .filtered_list{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .filtered_list p{
+    font-size:14px;
+    font-family:"Regular";
+    color:blue;
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .filtered_list .select_input{
+    font-family: "Regular";
+   font-size: 14px;
+   padding: 5px 14px;
+   border: 1px solid rgba(10,46,101,.1);
+   outline: none;
+   border-radius: 6px;
+   letter-spacing: 0px;
+   color: rgb(37, 37, 37);
+   margin-left: 10px;
+   appearance: none; 
+ }
+ .allLocation_area  .allLocation_container .allLocation_heading .filtered_list .select_input .item_name{
+    font-family: "Regular";
+    font-size: 12px;
  }
  .allLocation_area  .allLocation_container .allLocation_list {
     display:flex;
@@ -221,7 +247,6 @@
     }
     .allLocation_area  .allLocation_container .allLocation_heading{
         margin:0rem 2rem;
-
     }
     .allLocation_area  .allLocation_container .allLocation_heading .allLocation_list .list_item{
         width:50%;
