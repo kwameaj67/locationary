@@ -4,9 +4,9 @@ import { createSlice } from '@reduxjs/toolkit'
 const categorySlice  = createSlice({
     name:"categories",
     initialState: [
-        {id:1,name:"Plants",completed:false},
-        {id:2,name:"Fuego",completed:false},
-        {id:3,name:"One Dance",completed:false},
+        // {id:1,name:"Plants",completed:false},
+        // {id:2,name:"Fuego",completed:false},
+        // {id:3,name:"One Dance",completed:false},
     ],
     reducers:{
         addCategoryAction: (state, action) => {
