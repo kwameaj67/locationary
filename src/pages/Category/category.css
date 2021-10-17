@@ -80,10 +80,17 @@
     margin-right:4rem;
     
 }
+
 .category_area  .category_container .category_list_container h1{
     font-size:30px;
     font-family:"Bold";
     text-align:center
+}
+.category_area  .category_container .category_list_container .empty_category {
+    font-size:15px;
+    font-family:"Regular";
+    text-align:center;
+    color: #55575b;
 }
 .category_area  .category_container .category_list{
     margin-top:2rem;
