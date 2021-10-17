@@ -78,7 +78,7 @@ const AllLocations = () => {
         if (editing) {
             return { lat: coordinates.lat ? parseFloat(coordinates.lat) : -3.745, lng: coordinates.lng ? parseFloat(coordinates.lng) : -38.523 }
         } else {
-            return { lat: locationState !== 0 ? locationState[0].coordinates.lat : -3.745, lng: locationState !== 0 ? locationState[0].coordinates.lng : -38.523 }
+            return { lat: locationState.length !== 0 ? locationState[0].coordinates.lat : -3.745, lng: locationState.length !== 0 ? locationState[0].coordinates.lng : -38.523 }
         }
     }
     useEffect(() => {
@@ -110,7 +110,7 @@ const AllLocations = () => {
                         </select>
                     </div> */}
                     <div className="allLocation_list">
-                        {locationState.length === 0 && <p>There are no locations</p>}
+                        {locationState.length === 0 && <p className="no_location">There are no locations available</p>}
                         {
                             locationState.map((item) => {
                                 return (
