@@ -12,6 +12,7 @@ const CategoryPage = () => {
     const [showEditSection, setEditSection] = useState(false)
     const [editText, setEditText] = useState("")
     const [editID, setEditID] = useState(null)
+    const [showBtns, setShowBtns] = useState(false)
 
     //  get entire category redux state 
     const categoryState = useSelector((state) => state.categories)
@@ -86,21 +87,25 @@ const CategoryPage = () => {
                     <div className="category_list">
                         {categoryState.length === 0 &&
                             <p className="empty_category">There are no categories available</p>
-                            }
-                                {
-                                    categoryState.map((item) => (
-                                        <div key={item.id} className="list_item">
-                                            <ul>
-                                                <li> <div className="row">
-                                                    <p className="category_name">#{item.name}</p>
+                        }
+                        {
+                            categoryState.map((item) => (
+                                <div key={item.id} className="list_item" onClick={setShowBtns(true)}>
+                                    <ul>
+                                        <li> <div className="row">
+                                            <p className="category_name">#{item.name}</p>
+                                            {showBtns &&
+                                                <>
                                                     <button className="delete-btn" onClick={() => { deleteCategory(item.id) }}>Remove</button>
                                                     <button className="edit-btn" onClick={() => { showEditCategory(item.id, item.name) }}>Edit</button>
-                                                </div></li>
-                                            </ul>
-                                        </div>
-                                    ))
-                                }
-                        
+                                                </>
+                                            }
+                                        </div></li>
+                                    </ul>
+                                </div>
+                            ))
+                        }
+
                     </div>
                     <div className="edit_category">
                         {showEditSection &&

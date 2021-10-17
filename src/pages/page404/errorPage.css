@@ -1,0 +1,29 @@
+.page_container{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_container h1{
+    font-size:24px;
+    font-family:"Bold";
+}
+.page_container p{
+    font-size:16px;
+    font-family:"Regular";
+    color: #55575b; 
+}
+@media screen and (max-width:545px){
+    .page_container h1{
+        font-size:20px;
+    }
+    .page_container p{
+        font-size:15px;
+        max-width:200px;
+        line-height:22px;
+    } 
+}

@@ -1,8 +1,7 @@
 import { Switch, Route, useLocation } from 'react-router-dom'
 import routes from '../components/BottomBar/BottomBarData'
 import { CSSTransition } from "react-transition-group";
-import AllLocationPage from '../pages/AllLocation/AllLocations'
-import WelcomePage from '../pages/Welcome/Welcome'
+import { AllLocationsPage,WelcomePage,ErrorPage } from '../pages/index'
 
 
 function AppRouter() {
@@ -25,11 +24,15 @@ function AppRouter() {
                     ))}
                     <Switch>
                         <Route path="/viewLocations">
-                            <AllLocationPage />
+                            <AllLocationsPage />
                         </Route>
+                       
                         <Route path="/">
                             <WelcomePage />
                         </Route>
+                        {/* <Route path="/*">
+                            <ErrorPage/>
+                        </Route> */}
                     </Switch>
                 </Switch>
             </Switch>
