@@ -23,16 +23,16 @@ function AppRouter() {
                         />
                     ))}
                     <Switch>
-                        <Route path="/viewLocations">
+                        <Route exact path="/viewLocations">
                             <AllLocationsPage />
                         </Route>
                        
-                        <Route path="/">
+                        <Route exact path="/">
                             <WelcomePage />
                         </Route>
-                        {/* <Route path="/*">
+                        <Route exact path="/*">
                             <ErrorPage/>
-                        </Route> */}
+                        </Route>
                     </Switch>
                 </Switch>
             </Switch>
