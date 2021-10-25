@@ -5,7 +5,7 @@ import './maps.css'
 import { mapStyles } from './mapStyles'
 
 
-const Maps = (props) => {
+const Maps = React.memo( props  => {
     const containerStyle = {
         width: '50vw',
         height: '48vh'
@@ -25,6 +25,7 @@ const Maps = (props) => {
     })
     if (loadError) return <div className="loading_text">Error loading Google Maps🥶</div>
     if (!isLoaded) return <div className="loading_text">Loading maps.. Please wait</div>
+    console.log("Map component mounted")
     return (
         // <LoadScript googleMapsApiKey={MAPS_API}>
             <GoogleMap
@@ -39,6 +40,6 @@ const Maps = (props) => {
             </GoogleMap>
         // </LoadScript>
     )
-}
+});
 
 export default Maps
