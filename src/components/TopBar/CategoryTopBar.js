@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import tabs from '../BottomBar/BottomBarData'
 
 const  TopBarComponent = ({addCategoryFunc}) => {
-    console.log("categoryTopBar mounted")
+    // console.log("categoryTopBar mounted")
     return (
         <div className="topbar_area">
             <div className="container">

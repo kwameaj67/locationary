@@ -25,7 +25,7 @@ const Maps = React.memo( props  => {
     })
     if (loadError) return <div className="loading_text">Error loading Google Maps🥶</div>
     if (!isLoaded) return <div className="loading_text">Loading maps.. Please wait</div>
-    console.log("Map component mounted")
+    // console.log("Map component mounted")
     return (
         // <LoadScript googleMapsApiKey={MAPS_API}>
             <GoogleMap

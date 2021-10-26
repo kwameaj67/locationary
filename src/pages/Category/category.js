@@ -9,7 +9,7 @@ const CategoryPage = () => {
     //  get entire category redux state 
     const categoryState = useSelector((state) => state.categories)
 
-    console.log("CategoryPage Mounted")
+    // console.log("CategoryPage Mounted")
     const dispatch = useDispatch();
     const [category, setCategory] = useState("");
     const [showErrorMsg, setErrorMsg] = useState(false)
@@ -19,7 +19,6 @@ const CategoryPage = () => {
     const [showBtns, setShowBtns] = useState(false)
 
     const localState = JSON.parse(localStorage.getItem('categoryData'))
-    console.log(localState)
     // localState.map( item => {
     //     return(
     //         console.log("localStorage "+item)    
