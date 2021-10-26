@@ -7,10 +7,11 @@ import locationReducer from '../slices/locationSlice'
         locations:locationReducer,
     }
     const reduxStore = configureStore({
-        reducer:allReducers
+        reducer:allReducers,
+        devTools:true
     })
 
 
 
-    export default reduxStore
+    export default reduxStore;
 
