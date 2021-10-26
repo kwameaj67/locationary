@@ -1,10 +1,10 @@
 import React from 'react'
 import './topbar.css'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route ,Link} from 'react-router-dom'
 import tabs from '../BottomBar/BottomBarData'
 
-function TopBarComponent({addLocationFunc,viewLocationFunc}) {
-
+const TopBarComponent = () => {
+    console.log("locationTopBar mounted")
     return (
         <div className="topbar_area">
             <div className="container">
@@ -21,13 +21,15 @@ function TopBarComponent({addLocationFunc,viewLocationFunc}) {
                     </Switch>
                 }
                 <div className="action_btn">
-                    <button onClick={addLocationFunc}>Add Location</button>
-                    <button onClick={viewLocationFunc}>View Locations</button>
+                    {/* <button type="submit" onClick={props.addLocationFunc}>Add Location</button> */}
+                    <Link to="/viewLocations">
+                        <button >View Locations</button>
+                    </Link>
                 </div>
             </div>
         </div>
     )
 
-}
+};
 
-export default TopBarComponent
+export default React.memo(TopBarComponent);

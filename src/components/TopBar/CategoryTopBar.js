@@ -3,7 +3,8 @@ import './topbar.css'
 import { Switch, Route } from 'react-router-dom'
 import tabs from '../BottomBar/BottomBarData'
 
-function TopBarComponent({addCategoryFunc}) {
+const  TopBarComponent = ({addCategoryFunc}) => {
+    console.log("categoryTopBar mounted")
     return (
         <div className="topbar_area">
             <div className="container">
@@ -20,12 +21,11 @@ function TopBarComponent({addCategoryFunc}) {
                     </Switch>
                 }
                 <div className="action_btn">
-                    <button onClick={addCategoryFunc}>Add Category</button>
+                    <button type="submit" onClick={addCategoryFunc}>Add Category</button>
                 </div>
             </div>
         </div>
     )
+};
 
-}
-
-export default TopBarComponent
+export default React.memo(TopBarComponent)
