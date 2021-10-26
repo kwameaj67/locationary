@@ -42,4 +42,4 @@ const Maps = React.memo( props  => {
     )
 });
 
-export default Maps
+export default React.memo(Maps)
