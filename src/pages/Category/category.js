@@ -106,12 +106,12 @@ const CategoryPage = () => {
 
                     <div className="category_list">
                         {
-                            localStorage.getItem("categoryData") === null ?
+                            categoryState.length === 0 ?
                                 <p className="empty_category">There are no categories available</p>
                                 :
                                 <>
                                     {
-                                        localState.map((item) => (
+                                        categoryState.map((item) => (
                                             <div key={item.id} className="list_item" onClick={() => { setShowBtns(true) }}>
                                                 <ul>
                                                     <li> <div className="row">

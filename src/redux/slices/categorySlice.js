@@ -3,11 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 // slices controls, defines reducers
 const categorySlice  = createSlice({
     name:"categories",
-    initialState: [
-        // {id:1,name:"Plants",completed:false},
-        // {id:2,name:"Fuego",completed:false},
-        // {id:3,name:"One Dance",completed:false},
-    ],
+    initialState: [],
     reducers:{
         addCategoryAction: (state, action) => {
             const newCategory = {
@@ -17,8 +13,7 @@ const categorySlice  = createSlice({
             }
             state.push(newCategory);
             // stores data in memory
-            sessionStorage.setItem('categoryData', JSON.stringify(state));
-            sessionStorage.setItem('newCategory', JSON.stringify(newCategory));
+            localStorage.setItem('categoryData', JSON.stringify(state));
         },
         removeCategoryAction: (state, action) =>{
            const removeItem = state.filter((item) => item.id !== action.payload.id)
