@@ -36,6 +36,11 @@
     color: #55575b;
     margin-top: -2px;
 }
+.category_area  .category_container .category_heading form{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
 .category_area  .category_container .category_heading button {
     font-family:"Medium";
     margin-top:2rem;
