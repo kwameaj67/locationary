@@ -6,7 +6,11 @@ import { toaster } from 'evergreen-ui'
 import { addCategoryAction, removeCategoryAction, editCategoryAction } from '../../redux/slices/categorySlice'
 
 const CategoryPage = () => {
-    const dispatch = useDispatch()
+    //  get entire category redux state 
+    const categoryState = useSelector((state) => state.categories)
+
+    console.log("CategoryPage Mounted")
+    const dispatch = useDispatch();
     const [category, setCategory] = useState("");
     const [showErrorMsg, setErrorMsg] = useState(false)
     const [showEditSection, setEditSection] = useState(false)
@@ -14,31 +18,42 @@ const CategoryPage = () => {
     const [editID, setEditID] = useState(null)
     const [showBtns, setShowBtns] = useState(false)
 
-    //  get entire category redux state 
-    const categoryState = useSelector((state) => state.categories)
+    const localState = JSON.parse(localStorage.getItem('categoryData'))
+    console.log(localState)
+    // localState.map( item => {
+    //     return(
+    //         console.log("localStorage "+item)    
+    //     )
+    //  })
 
-    useEffect(() => {
-        document.title = "myLocation | CategoryPage"
-        console.log(categoryState)
-        return categoryState
-    })
-    const addCategory = (e) => {
-        e.preventDefault();
+
+    const clearAllInterval = (interval) => {
+        return clearInterval(interval)
+    }
+    const addCategory = (event) => {
+        event.preventDefault();
         if (category === "") {
             setErrorMsg(true)
-            setInterval(() => {
+            const errorInterval = setInterval(() => {
                 setErrorMsg(false)
             }, 4000)
+            clearAllInterval(errorInterval)
         } else {
-            dispatch(
-                addCategoryAction({
-                    id: Date.now(),
-                    name: category,
-                })
-            )
+            console.log(category)
+            dispatchAddCategory()
+            // setAllCategories((item) => [...item,category])
             setCategory("")
             toaster.success("You've successfully added a new category.")
         }
+    }
+    const dispatchAddCategory = () => {
+        dispatch(
+            addCategoryAction({
+                id: Date.now(),
+                name: category,
+                completed: true
+            })
+        )
     }
     const deleteCategory = (id) => {
         dispatch(
@@ -54,7 +69,6 @@ const CategoryPage = () => {
         setEditSection(true)
         setEditText(name)
         setEditID(id)
-
         console.log(id, name)
     }
     const editCategory = () => {
@@ -68,6 +82,10 @@ const CategoryPage = () => {
         toaster.success("You've successfully edit an existed category.")
     }
 
+    useEffect(() => {
+        document.title = "myLocation | CategoryPage"
+        return () => clearAllInterval()
+    }, [categoryState])
     return (
         <div className="category_area">
             <div className="topbar">
@@ -77,41 +95,47 @@ const CategoryPage = () => {
                 <div className="category_heading">
                     <h1>New Category</h1>
                     <p>Create new categories of your choice.🚀</p>
-                    <input className="input" type="default" placeholder="Add category" autoComplete="false" name="category" value={category} onChange={(e) => { setCategory(e.target.value) }} />
-                    {showErrorMsg && <p className="errorMsg">Sorry, please enter a valid category name.</p>}
-                    <button onClick={addCategory}>Add Category</button>
+                    <form onSubmit={addCategory}>
+                        <input className="input" type="default" placeholder="Add category" autoComplete="false" name="category" value={category} onChange={(e) => { setCategory(e.target.value) }} />
+                        {showErrorMsg && <p className="errorMsg">Sorry, please enter a valid category name.</p>}
+                        <button type="submit">Add Category</button>
+                    </form>
                 </div>
                 <div className="category_list_container">
                     <h1>List of category</h1>
 
                     <div className="category_list">
-                        {categoryState.length === 0 &&
-                            <p className="empty_category">There are no categories available</p>
-                        }
                         {
-                            categoryState.map((item) => (
-                                <div key={item.id} className="list_item" onClick={setShowBtns(true)}>
-                                    <ul>
-                                        <li> <div className="row">
-                                            <p className="category_name">#{item.name}</p>
-                                            {showBtns &&
-                                                <>
-                                                    <button className="delete-btn" onClick={() => { deleteCategory(item.id) }}>Remove</button>
-                                                    <button className="edit-btn" onClick={() => { showEditCategory(item.id, item.name) }}>Edit</button>
-                                                </>
-                                            }
-                                        </div></li>
-                                    </ul>
-                                </div>
-                            ))
+                            localStorage.getItem("categoryData") === null ?
+                                <p className="empty_category">There are no categories available</p>
+                                :
+                                <>
+                                    {
+                                        localState.map((item) => (
+                                            <div key={item.id} className="list_item" onClick={() => { setShowBtns(true) }}>
+                                                <ul>
+                                                    <li> <div className="row">
+                                                        <p className="category_name">#{item.name}</p>
+                                                        {showBtns &&
+                                                            <>
+                                                                <button className="delete-btn" onClick={() => { deleteCategory(item.id) }}>Remove</button>
+                                                                <button className="edit-btn" onClick={() => { showEditCategory(item.id, item.name) }}>Edit</button>
+                                                            </>
+                                                        }
+                                                    </div></li>
+                                                </ul>
+                                            </div>
+                                        ))
+                                    }
+                                </>
                         }
-
                     </div>
+
                     <div className="edit_category">
                         {showEditSection &&
                             <div className="edit_container">
                                 <input className="input" type="default" placeholder="" autoComplete="false" name="editCategory" value={editText} onChange={(e) => { setEditText(e.target.value) }} />
-                                <button onClick={() => { editCategory() }}>Edit category</button>
+                                <button onClick={editCategory}>Edit category</button>
                             </div>
                         }
                     </div>

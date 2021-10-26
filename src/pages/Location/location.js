@@ -30,9 +30,11 @@ const LocationPage = () => {
             setErrorMsg("Enter name of location")
         } else if (address === "") {
             setErrorMsg("Enter name of location address")
-        } else if (category === "") {
+        } 
+        else if (category === "") {
             setErrorMsg("Select a category")
-        } else if (Object.keys(coordinates).length === 0) {
+        } 
+        else if (Object.keys(coordinates).length === 0) {
             setErrorMsg("Pick your location from the map provided")
         }
         // else if (Object.keys(marker === 0)) {
@@ -113,6 +115,7 @@ const LocationPage = () => {
                             center={{ lat: marker.lat ? parseFloat(marker.lat) : -3.745 , lng: marker.lng ? parseFloat(marker.lng) : -38.523 }}  
                             onClickAddress={(event) => {
                                 // update marker coordinates
+                                console.log(event)
                                 setMarkers({
                                     lat: parseFloat(event.latLng.lat()),
                                     lng: parseFloat(event.latLng.lng()),
@@ -120,11 +123,11 @@ const LocationPage = () => {
                                 })
                                 // update input with current coordinates
                                 setCoordinates({ lat: parseFloat(event.latLng.lat()), lng: parseFloat(event.latLng.lat()),time:marker.time })  
-                                console.log("cordintates"+coordinates.lat, coordinates.lng)
+                                console.log("cordintates"+ coordinates.lat, coordinates.lng)
                             }}
                         >
                             {marker !== {} ?
-                                <Marker key={marker.time} position={{ lat: marker.lat, lng: marker.lng }} />
+                                <Marker key={marker.time} position={{ lat: parseFloat(marker.lat), lng: parseFloat(marker.lng) }} />
                                 :
                                 null
                                 }
