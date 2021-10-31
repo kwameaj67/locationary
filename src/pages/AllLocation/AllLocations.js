@@ -4,11 +4,12 @@ import TopBar from '../../components/TopBar/AllLocationTopBar'
 import { useSelector } from "react-redux"
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
-import { removeLocationAction, editLocationAction } from '../../redux/slices/locationSlice'
+import { removeLocationAction, editLocationAction, } from '../../redux/slices/locationSlice'
 import Maps from '../../components/Map/Maps'
 import { Marker, InfoWindow } from '@react-google-maps/api'
 import moment from 'moment'
 import { toaster } from 'evergreen-ui'
+import { createSelector } from 'reselect'
 
 const AllLocations = () => {
     const dispatch = useDispatch()
@@ -18,17 +19,20 @@ const AllLocations = () => {
     const [address, setAddress] = useState("");
     const [category, setCategory] = useState("")
     const [coordinates, setCoordinates] = useState({})
-    // const [newEditMarker, setEditMarker] = useState({})
     const [selectedMarker, setSelectedMarker] = useState(null)
     const [editing, setEditing] = useState(false)
     const [showErrorMsg, setShowErrorMsg] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
 
-    const locationState = useSelector(state => state.locations)
-
+    // get all categories
     const categoryState = useSelector((state) => state.categories)
-    // const filteredLocations = locationState.filter(loc => loc.category === category)
 
+    // filter data based on categories
+    const filterLocations = createSelector(
+        (state) => state.locations,
+        (locations) => locations.filter(loc => loc.category === category)
+    )
+    const locationState = useSelector(filterLocations)
 
     const deleteLocation = (id) => {
         dispatch(
@@ -45,7 +49,7 @@ const AllLocations = () => {
         setCategory(item.category)
         setCoordinates(item.coordinates)
     }
-   
+
     const editLocation = (e) => {
         e.preventDefault()
         setShowErrorMsg(true)
@@ -68,6 +72,7 @@ const AllLocations = () => {
             })
         )
     }
+   
     const getLocationMarkers = () => {
         // // retrieve all coordinates from locations & add to markers
         locationState.map(item => {
@@ -85,7 +90,7 @@ const AllLocations = () => {
         getLocationMarkers()
         // console.log(locationState.length)
         document.title = "myLocation | All locations"
-      
+
         return locationState
     })
     return (
@@ -96,10 +101,10 @@ const AllLocations = () => {
             <div className="allLocation_container">
                 <div className="allLocation_heading">
                     <h1>My Locations</h1>
-                    {/* <div className="filtered_list">
+                    <div className="filtered_list">
                         <p>Filtered by</p>
                         <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
-                            <option className="value" value={category !== 0 ? category : "Select category"} hidden={true}>{category}</option>
+                            <option className="value" value={category !== 0 ? category : "Select category"} hidden={true}>Select a category</option>
                             {
                                 categoryState.map((item) => {
                                     return (
@@ -108,7 +113,7 @@ const AllLocations = () => {
                                 })
                             }
                         </select>
-                    </div> */}
+                    </div>
                     <div className="allLocation_list">
                         {locationState.length === 0 && <p className="no_location">There are no locations available</p>}
                         {
