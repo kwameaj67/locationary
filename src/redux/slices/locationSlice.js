@@ -28,14 +28,12 @@ const locationSlice = createSlice({
             state[index].category = action.payload.category
             state[index].coordinates = action.payload.coordinates
         },
-        sortLocationDataAction: (state, action) => {
-            return state.sort((a,b) => a.address > b.address)
-        }
+        
 
 
     }
 })
 
-export const { addLocationAction, removeLocationAction, editLocationAction,sortLocationDataAction } = locationSlice.actions
+export const { addLocationAction, removeLocationAction, editLocationAction, } = locationSlice.actions
 
 export default locationSlice.reducer
