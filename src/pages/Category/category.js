@@ -18,7 +18,7 @@ const CategoryPage = () => {
     const [editID, setEditID] = useState(null)
     const [showBtns, setShowBtns] = useState(false)
 
-    const localState = JSON.parse(localStorage.getItem('categoryData'))
+    // const localState = JSON.parse(localStorage.getItem('categoryData'))
     // localState.map( item => {
     //     return(
     //         console.log("localStorage "+item)    
