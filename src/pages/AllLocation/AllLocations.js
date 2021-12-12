@@ -92,7 +92,7 @@ const AllLocations = () => {
         document.title = "myLocation | All locations"
 
         return locationState
-    })
+    },)
     return (
         <div className="allLocation_area">
             <div className="topbar">

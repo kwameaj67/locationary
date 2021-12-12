@@ -1,7 +1,7 @@
 {
   "name": "frontend_test",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@react-google-maps/api": "^2.4.1",
     "@reduxjs/toolkit": "^1.6.2",
