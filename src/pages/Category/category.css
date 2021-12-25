@@ -152,11 +152,11 @@
     cursor:pointer;
     transition: 300ms ease-in-out;
 }
-.category_area  .category_container .category_list .list_item ul li:hover .row .delete-btn {
+.category_area  .category_container .category_list .list_item ul li .row:hover .delete-btn {
     transition: 300ms ease-in-out;
     display:block;
 }
-.category_area  .category_container .category_list .list_item ul li:hover .row .edit-btn {
+.category_area  .category_container .category_list .list_item ul li .row:hover .edit-btn {
     transition: 300ms ease-in-out;
     display:block;
 }

@@ -115,12 +115,12 @@ const CategoryPage = () => {
                                                 <ul>
                                                     <li> <div className="row">
                                                         <p className="category_name">#{item.name}</p>
-                                                        {showBtns &&
+                                                        {/* {showBtns && */}
                                                             <>
                                                                 <button className="delete-btn" onClick={() => { deleteCategory(item.id) }}>Remove</button>
                                                                 <button className="edit-btn" onClick={() => { showEditCategory(item.id, item.name) }}>Edit</button>
                                                             </>
-                                                        }
+                                                        {/* } */}
                                                     </div></li>
                                                 </ul>
                                             </div>

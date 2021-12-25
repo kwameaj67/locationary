@@ -23,16 +23,18 @@ const AllLocations = () => {
     const [editing, setEditing] = useState(false)
     const [showErrorMsg, setShowErrorMsg] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
+    const [locations,setLocations] = useState([]);
 
-    // get all categories
+    // get all categories & locations
     const categoryState = useSelector((state) => state.categories)
-
-    // filter data based on categories
+    const allLocationState = useSelector((state) => state.locations)
     const filterLocations = createSelector(
         (state) => state.locations,
         (locations) => locations.filter(loc => loc.category === category)
     )
     const locationState = useSelector(filterLocations)
+
+
 
     const deleteLocation = (id) => {
         dispatch(
@@ -72,7 +74,7 @@ const AllLocations = () => {
             })
         )
     }
-   
+
     const getLocationMarkers = () => {
         // // retrieve all coordinates from locations & add to markers
         locationState.map(item => {
@@ -83,16 +85,17 @@ const AllLocations = () => {
         if (editing) {
             return { lat: coordinates.lat ? parseFloat(coordinates.lat) : -3.745, lng: coordinates.lng ? parseFloat(coordinates.lng) : -38.523 }
         } else {
-            return { lat: locationState.length !== 0 ? locationState[0].coordinates.lat : -3.745, lng: locationState.length !== 0 ? locationState[0].coordinates.lng : -38.523 }
+            return { lat: locations.length !== 0 ? locations[0].coordinates.lat : -3.745, lng: locations.length !== 0 ? locations[0].coordinates.lng : -38.523 }
         }
     }
+    
     useEffect(() => {
-        getLocationMarkers()
-        // console.log(locationState.length)
         document.title = "myLocation | All locations"
-
-        return locationState
-    },)
+        console.log(allLocationState)
+        console.log("Category is " + category)
+        setLocations(allLocationState)
+        
+    },[allLocationState,category])
     return (
         <div className="allLocation_area">
             <div className="topbar">
@@ -101,9 +104,9 @@ const AllLocations = () => {
             <div className="allLocation_container">
                 <div className="allLocation_heading">
                     <h1>My Locations</h1>
-                    <div className="filtered_list">
+                    {/* <div className="filtered_list">
                         <p>Filtered by</p>
-                        <select className="select_input" onChange={(e) => setCategory(e.target.value)} placeholder="Select a category" required={true} >
+                        <select className="select_input" onChange={(e)=>setCategory(e.target.value)} placeholder="Select a category" required={true} >
                             <option className="value" value={category !== 0 ? category : "Select category"} hidden={true}>Select a category</option>
                             {
                                 categoryState.map((item) => {
@@ -113,14 +116,14 @@ const AllLocations = () => {
                                 })
                             }
                         </select>
-                    </div>
+                    </div> */}
                     <div className="allLocation_list">
-                        {locationState.length === 0 && <p className="no_location">There are no locations available</p>}
+                        {locations.length === 0 && <p className="no_location">There are no locations available</p>}
                         {
-                            locationState.map((item) => {
+                            locations.map((item) => {
                                 return (
                                     <div key={item.id} className="list_item">
-                                        { locationState.length > 0 &&
+                                        { locations.length > 0 &&
                                             <div className="item_block">
                                                 <div className="item_column">
                                                     <div className="icon_container">
@@ -178,7 +181,7 @@ const AllLocations = () => {
                             />
                             :
                             <>
-                                {locationState.map(item => {
+                                {locations.map(item => {
                                     return (
                                         <>
                                             <Marker
@@ -203,9 +206,11 @@ const AllLocations = () => {
                             >
                                 <div className="location_details">
                                     <p>{selectedMarker.name}</p>
-                                    <p>{selectedMarker.address}</p>
-                                    <p>{selectedMarker.category}</p>
+                                    <p>Address: {selectedMarker.address}</p>
+                                    <p>Category: {selectedMarker.category}</p>
                                     <p>Created at {moment(selectedMarker.time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
+                                    <p>Latitude: {selectedMarker.coordinates.lat} </p>
+                                    <p>Longitude: {selectedMarker.coordinates.lng} </p>
                                 </div>
                             </InfoWindow>
                         ) : null}
