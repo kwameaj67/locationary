@@ -1,8 +1,15 @@
-export { default as Category } from './Category/category'
-export { default as Location } from './Location/location'
-export {default as  AllLocationsPage } from './AllLocation/AllLocations'
-export {default as  WelcomePage } from './Welcome/Welcome'
-export {default as ErrorPage } from './page404/ErrorPage'
+import React from 'react'
 
+const CategoryPage = React.lazy(() => import('./Category/category'))
+const LocationPage = React.lazy(() => import('./Location/location'))
+const AllLocationsPage = React.lazy(() => import('./AllLocation/AllLocations'))
+const WelcomePage = React.lazy(() => import('./Welcome/Welcome'))
+const ErrorPage = React.lazy(() => import('./page404/ErrorPage'))
 
-
+export {
+    CategoryPage,
+    LocationPage,
+    AllLocationsPage,
+    WelcomePage,
+    ErrorPage
+}
