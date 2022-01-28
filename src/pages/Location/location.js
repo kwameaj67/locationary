@@ -116,13 +116,21 @@ const LocationPage = () => {
                             onClickAddress={(event) => {
                                 // update marker coordinates
                                 console.log(event)
-                                setMarkers({
-                                    lat: parseFloat(event.latLng.lat()),
-                                    lng: parseFloat(event.latLng.lng()),
-                                    time: Date.now()
-                                })
+                                setMarkers(marker => ({
+                                    ...marker,
+                                    ...{
+                                        lat: parseFloat(event.latLng.lat()),
+                                        lng: parseFloat(event.latLng.lng()),
+                                        time: Date.now()
+                                    }
+                                }))
                                 // update input with current coordinates
-                                setCoordinates({ lat: parseFloat(event.latLng.lat()), lng: parseFloat(event.latLng.lat()),time:marker.time })  
+                                setCoordinates(coordinates => ({
+                                    ...coordinates,
+                                    ...{ lat: parseFloat(event.latLng.lat()), lng: parseFloat(event.latLng.lng()),time:marker.time }
+
+                                }))
+                                console.log("marker"+ marker.lat, marker.lng)
                                 console.log("cordintates"+ coordinates.lat, coordinates.lng)
                             }}
                         >
